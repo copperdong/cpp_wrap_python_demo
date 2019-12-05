@@ -3,17 +3,17 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "depends": [
-            "Rectangle.cpp",
-            "Rectangle.h"
+        "extra_compile_args": [
+            "-std=c++14"
         ],
         "include_dirs": [
-            "."
+            "../../c++/code",
+            "../../cpp/lib"
         ],
         "language": "c++",
         "name": "rect",
         "sources": [
-            "rect.pyx"
+            "../_lib/rect.pyx"
         ]
     },
     "module_name": "rect"
@@ -848,8 +848,8 @@ static const char *__pyx_f[] = {
 /*--- Type declarations ---*/
 struct __pyx_obj_4rect_PyRectangle;
 
-/* "rect.pyx":15
- * 
+/* "rect.pyx":5
+ * from Rectangle cimport Rectangle
  * 
  * cdef class PyRectangle:             # <<<<<<<<<<<<<<
  *     cdef Rectangle c_rect
@@ -1157,17 +1157,11 @@ static const char __pyx_k_y0[] = "y0";
 static const char __pyx_k_y1[] = "y1";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
-static const char __pyx_k_rect[] = "rect";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_main_2[] = "main";
 static const char __pyx_k_reduce[] = "__reduce__";
-static const char __pyx_k_rec_ptr[] = "rec_ptr";
 static const char __pyx_k_getstate[] = "__getstate__";
-static const char __pyx_k_rec_area[] = "rec_area";
-static const char __pyx_k_rect_pyx[] = "rect.pyx";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_TypeError[] = "TypeError";
-static const char __pyx_k_rec_stack[] = "rec_stack";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_PyRectangle[] = "PyRectangle";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
@@ -1181,14 +1175,8 @@ static PyObject *__pyx_n_s_dx;
 static PyObject *__pyx_n_s_dy;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_main;
-static PyObject *__pyx_n_s_main_2;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
-static PyObject *__pyx_n_s_rec_area;
-static PyObject *__pyx_n_s_rec_ptr;
-static PyObject *__pyx_n_s_rec_stack;
-static PyObject *__pyx_n_s_rect;
-static PyObject *__pyx_kp_s_rect_pyx;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
@@ -1199,7 +1187,6 @@ static PyObject *__pyx_n_s_x0;
 static PyObject *__pyx_n_s_x1;
 static PyObject *__pyx_n_s_y0;
 static PyObject *__pyx_n_s_y1;
-static PyObject *__pyx_pf_4rect_main(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static int __pyx_pf_4rect_11PyRectangle___cinit__(struct __pyx_obj_4rect_PyRectangle *__pyx_v_self, int __pyx_v_x0, int __pyx_v_y0, int __pyx_v_x1, int __pyx_v_y1); /* proto */
 static PyObject *__pyx_pf_4rect_11PyRectangle_2get_area(struct __pyx_obj_4rect_PyRectangle *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_4rect_11PyRectangle_4get_size(struct __pyx_obj_4rect_PyRectangle *__pyx_v_self); /* proto */
@@ -1217,110 +1204,9 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_10__setstate_cython__(CYTHON_UNUSE
 static PyObject *__pyx_tp_new_4rect_PyRectangle(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
-static PyObject *__pyx_tuple__3;
-static PyObject *__pyx_codeobj__4;
 /* Late includes */
 
-/* "rect.pyx":5
- * from Rectangle cimport Rectangle
- * 
- * def main():             # <<<<<<<<<<<<<<
- *     rec_ptr = new Rectangle(1, 2, 3, 4)  # Instantiate a Rectangle object on the heap
- *     try:
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_4rect_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_4rect_1main = {"main", (PyCFunction)__pyx_pw_4rect_1main, METH_NOARGS, 0};
-static PyObject *__pyx_pw_4rect_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("main (wrapper)", 0);
-  __pyx_r = __pyx_pf_4rect_main(__pyx_self);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_4rect_main(CYTHON_UNUSED PyObject *__pyx_self) {
-  shapes::Rectangle *__pyx_v_rec_ptr;
-  CYTHON_UNUSED int __pyx_v_rec_area;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  shapes::Rectangle *__pyx_t_1;
-  __Pyx_RefNannySetupContext("main", 0);
-
-  /* "rect.pyx":6
- * 
- * def main():
- *     rec_ptr = new Rectangle(1, 2, 3, 4)  # Instantiate a Rectangle object on the heap             # <<<<<<<<<<<<<<
- *     try:
- *         rec_area = rec_ptr.getArea()
- */
-  try {
-    __pyx_t_1 = new shapes::Rectangle(1, 2, 3, 4);
-  } catch(...) {
-    __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 6, __pyx_L1_error)
-  }
-  __pyx_v_rec_ptr = __pyx_t_1;
-
-  /* "rect.pyx":7
- * def main():
- *     rec_ptr = new Rectangle(1, 2, 3, 4)  # Instantiate a Rectangle object on the heap
- *     try:             # <<<<<<<<<<<<<<
- *         rec_area = rec_ptr.getArea()
- *     finally:
- */
-  /*try:*/ {
-
-    /* "rect.pyx":8
- *     rec_ptr = new Rectangle(1, 2, 3, 4)  # Instantiate a Rectangle object on the heap
- *     try:
- *         rec_area = rec_ptr.getArea()             # <<<<<<<<<<<<<<
- *     finally:
- *         del rec_ptr  # delete heap allocated object
- */
-    __pyx_v_rec_area = __pyx_v_rec_ptr->getArea();
-  }
-
-  /* "rect.pyx":10
- *         rec_area = rec_ptr.getArea()
- *     finally:
- *         del rec_ptr  # delete heap allocated object             # <<<<<<<<<<<<<<
- * 
- *     cdef Rectangle rec_stack  # Instantiate a Rectangle object on the stack
- */
-  /*finally:*/ {
-    /*normal exit:*/{
-      delete __pyx_v_rec_ptr;
-      goto __pyx_L5;
-    }
-    __pyx_L5:;
-  }
-
-  /* "rect.pyx":5
- * from Rectangle cimport Rectangle
- * 
- * def main():             # <<<<<<<<<<<<<<
- *     rec_ptr = new Rectangle(1, 2, 3, 4)  # Instantiate a Rectangle object on the heap
- *     try:
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("rect.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "rect.pyx":18
+/* "rect.pyx":8
  *     cdef Rectangle c_rect
  * 
  *     def __cinit__(self, int x0, int y0, int x1, int y1):             # <<<<<<<<<<<<<<
@@ -1365,23 +1251,23 @@ static int __pyx_pw_4rect_11PyRectangle_1__cinit__(PyObject *__pyx_v_self, PyObj
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y0)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 4, 4, 1); __PYX_ERR(1, 18, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 4, 4, 1); __PYX_ERR(1, 8, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_x1)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 4, 4, 2); __PYX_ERR(1, 18, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 4, 4, 2); __PYX_ERR(1, 8, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y1)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 4, 4, 3); __PYX_ERR(1, 18, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 4, 4, 3); __PYX_ERR(1, 8, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 18, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 8, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -1391,14 +1277,14 @@ static int __pyx_pw_4rect_11PyRectangle_1__cinit__(PyObject *__pyx_v_self, PyObj
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
     }
-    __pyx_v_x0 = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_x0 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 18, __pyx_L3_error)
-    __pyx_v_y0 = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_y0 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 18, __pyx_L3_error)
-    __pyx_v_x1 = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_x1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 18, __pyx_L3_error)
-    __pyx_v_y1 = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_y1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 18, __pyx_L3_error)
+    __pyx_v_x0 = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_x0 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 8, __pyx_L3_error)
+    __pyx_v_y0 = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_y0 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 8, __pyx_L3_error)
+    __pyx_v_x1 = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_x1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 8, __pyx_L3_error)
+    __pyx_v_y1 = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_y1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 8, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 18, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 8, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rect.PyRectangle.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1417,7 +1303,7 @@ static int __pyx_pf_4rect_11PyRectangle___cinit__(struct __pyx_obj_4rect_PyRecta
   shapes::Rectangle __pyx_t_1;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "rect.pyx":19
+  /* "rect.pyx":9
  * 
  *     def __cinit__(self, int x0, int y0, int x1, int y1):
  *         self.c_rect = Rectangle(x0, y0, x1, y1)             # <<<<<<<<<<<<<<
@@ -1428,11 +1314,11 @@ static int __pyx_pf_4rect_11PyRectangle___cinit__(struct __pyx_obj_4rect_PyRecta
     __pyx_t_1 = shapes::Rectangle(__pyx_v_x0, __pyx_v_y0, __pyx_v_x1, __pyx_v_y1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 19, __pyx_L1_error)
+    __PYX_ERR(1, 9, __pyx_L1_error)
   }
   __pyx_v_self->c_rect = __pyx_t_1;
 
-  /* "rect.pyx":18
+  /* "rect.pyx":8
  *     cdef Rectangle c_rect
  * 
  *     def __cinit__(self, int x0, int y0, int x1, int y1):             # <<<<<<<<<<<<<<
@@ -1451,7 +1337,7 @@ static int __pyx_pf_4rect_11PyRectangle___cinit__(struct __pyx_obj_4rect_PyRecta
   return __pyx_r;
 }
 
-/* "rect.pyx":21
+/* "rect.pyx":11
  *         self.c_rect = Rectangle(x0, y0, x1, y1)
  * 
  *     def get_area(self):             # <<<<<<<<<<<<<<
@@ -1478,7 +1364,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2get_area(struct __pyx_obj_4rect_P
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("get_area", 0);
 
-  /* "rect.pyx":22
+  /* "rect.pyx":12
  * 
  *     def get_area(self):
  *         return self.c_rect.getArea()             # <<<<<<<<<<<<<<
@@ -1486,13 +1372,13 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2get_area(struct __pyx_obj_4rect_P
  *     def get_size(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.getArea()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 22, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.getArea()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "rect.pyx":21
+  /* "rect.pyx":11
  *         self.c_rect = Rectangle(x0, y0, x1, y1)
  * 
  *     def get_area(self):             # <<<<<<<<<<<<<<
@@ -1511,7 +1397,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2get_area(struct __pyx_obj_4rect_P
   return __pyx_r;
 }
 
-/* "rect.pyx":24
+/* "rect.pyx":14
  *         return self.c_rect.getArea()
  * 
  *     def get_size(self):             # <<<<<<<<<<<<<<
@@ -1542,7 +1428,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_4get_size(struct __pyx_obj_4rect_P
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("get_size", 0);
 
-  /* "rect.pyx":26
+  /* "rect.pyx":16
  *     def get_size(self):
  *         cdef int width, height
  *         self.c_rect.getSize(&width, &height)             # <<<<<<<<<<<<<<
@@ -1551,7 +1437,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_4get_size(struct __pyx_obj_4rect_P
  */
   __pyx_v_self->c_rect.getSize((&__pyx_v_width), (&__pyx_v_height));
 
-  /* "rect.pyx":27
+  /* "rect.pyx":17
  *         cdef int width, height
  *         self.c_rect.getSize(&width, &height)
  *         return width, height             # <<<<<<<<<<<<<<
@@ -1559,11 +1445,11 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_4get_size(struct __pyx_obj_4rect_P
  *     def move(self, dx, dy):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 27, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 27, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_height); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 27, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
@@ -1575,7 +1461,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_4get_size(struct __pyx_obj_4rect_P
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "rect.pyx":24
+  /* "rect.pyx":14
  *         return self.c_rect.getArea()
  * 
  *     def get_size(self):             # <<<<<<<<<<<<<<
@@ -1596,7 +1482,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_4get_size(struct __pyx_obj_4rect_P
   return __pyx_r;
 }
 
-/* "rect.pyx":29
+/* "rect.pyx":19
  *         return width, height
  * 
  *     def move(self, dx, dy):             # <<<<<<<<<<<<<<
@@ -1635,11 +1521,11 @@ static PyObject *__pyx_pw_4rect_11PyRectangle_7move(PyObject *__pyx_v_self, PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dy)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("move", 1, 2, 2, 1); __PYX_ERR(1, 29, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("move", 1, 2, 2, 1); __PYX_ERR(1, 19, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "move") < 0)) __PYX_ERR(1, 29, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "move") < 0)) __PYX_ERR(1, 19, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1652,7 +1538,7 @@ static PyObject *__pyx_pw_4rect_11PyRectangle_7move(PyObject *__pyx_v_self, PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("move", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 29, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("move", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 19, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rect.PyRectangle.move", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1672,18 +1558,18 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_6move(struct __pyx_obj_4rect_PyRec
   int __pyx_t_2;
   __Pyx_RefNannySetupContext("move", 0);
 
-  /* "rect.pyx":30
+  /* "rect.pyx":20
  * 
  *     def move(self, dx, dy):
  *         self.c_rect.move(dx, dy)             # <<<<<<<<<<<<<<
  * 
  *     # Attribute access
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 30, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 30, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dx); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_dy); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 20, __pyx_L1_error)
   __pyx_v_self->c_rect.move(__pyx_t_1, __pyx_t_2);
 
-  /* "rect.pyx":29
+  /* "rect.pyx":19
  *         return width, height
  * 
  *     def move(self, dx, dy):             # <<<<<<<<<<<<<<
@@ -1703,7 +1589,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_6move(struct __pyx_obj_4rect_PyRec
   return __pyx_r;
 }
 
-/* "rect.pyx":34
+/* "rect.pyx":24
  *     # Attribute access
  *     @property
  *     def x0(self):             # <<<<<<<<<<<<<<
@@ -1730,7 +1616,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2x0___get__(struct __pyx_obj_4rect
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "rect.pyx":35
+  /* "rect.pyx":25
  *     @property
  *     def x0(self):
  *         return self.c_rect.x0             # <<<<<<<<<<<<<<
@@ -1738,13 +1624,13 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2x0___get__(struct __pyx_obj_4rect
  *     def x0(self, x0):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.x0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.x0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "rect.pyx":34
+  /* "rect.pyx":24
  *     # Attribute access
  *     @property
  *     def x0(self):             # <<<<<<<<<<<<<<
@@ -1763,7 +1649,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2x0___get__(struct __pyx_obj_4rect
   return __pyx_r;
 }
 
-/* "rect.pyx":37
+/* "rect.pyx":27
  *         return self.c_rect.x0
  *     @x0.setter
  *     def x0(self, x0):             # <<<<<<<<<<<<<<
@@ -1790,17 +1676,17 @@ static int __pyx_pf_4rect_11PyRectangle_2x0_2__set__(struct __pyx_obj_4rect_PyRe
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "rect.pyx":38
+  /* "rect.pyx":28
  *     @x0.setter
  *     def x0(self, x0):
  *         self.c_rect.x0 = x0             # <<<<<<<<<<<<<<
  * 
  *     # Attribute access
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_x0); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_x0); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 28, __pyx_L1_error)
   __pyx_v_self->c_rect.x0 = __pyx_t_1;
 
-  /* "rect.pyx":37
+  /* "rect.pyx":27
  *         return self.c_rect.x0
  *     @x0.setter
  *     def x0(self, x0):             # <<<<<<<<<<<<<<
@@ -1819,7 +1705,7 @@ static int __pyx_pf_4rect_11PyRectangle_2x0_2__set__(struct __pyx_obj_4rect_PyRe
   return __pyx_r;
 }
 
-/* "rect.pyx":42
+/* "rect.pyx":32
  *     # Attribute access
  *     @property
  *     def x1(self):             # <<<<<<<<<<<<<<
@@ -1846,7 +1732,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2x1___get__(struct __pyx_obj_4rect
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "rect.pyx":43
+  /* "rect.pyx":33
  *     @property
  *     def x1(self):
  *         return self.c_rect.x1             # <<<<<<<<<<<<<<
@@ -1854,13 +1740,13 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2x1___get__(struct __pyx_obj_4rect
  *     def x1(self, x1):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.x1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.x1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "rect.pyx":42
+  /* "rect.pyx":32
  *     # Attribute access
  *     @property
  *     def x1(self):             # <<<<<<<<<<<<<<
@@ -1879,7 +1765,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2x1___get__(struct __pyx_obj_4rect
   return __pyx_r;
 }
 
-/* "rect.pyx":45
+/* "rect.pyx":35
  *         return self.c_rect.x1
  *     @x1.setter
  *     def x1(self, x1):             # <<<<<<<<<<<<<<
@@ -1906,17 +1792,17 @@ static int __pyx_pf_4rect_11PyRectangle_2x1_2__set__(struct __pyx_obj_4rect_PyRe
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "rect.pyx":46
+  /* "rect.pyx":36
  *     @x1.setter
  *     def x1(self, x1):
  *         self.c_rect.x1 = x1             # <<<<<<<<<<<<<<
  * 
  *     # Attribute access
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_x1); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 46, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_x1); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 36, __pyx_L1_error)
   __pyx_v_self->c_rect.x1 = __pyx_t_1;
 
-  /* "rect.pyx":45
+  /* "rect.pyx":35
  *         return self.c_rect.x1
  *     @x1.setter
  *     def x1(self, x1):             # <<<<<<<<<<<<<<
@@ -1935,7 +1821,7 @@ static int __pyx_pf_4rect_11PyRectangle_2x1_2__set__(struct __pyx_obj_4rect_PyRe
   return __pyx_r;
 }
 
-/* "rect.pyx":50
+/* "rect.pyx":40
  *     # Attribute access
  *     @property
  *     def y0(self):             # <<<<<<<<<<<<<<
@@ -1962,7 +1848,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2y0___get__(struct __pyx_obj_4rect
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "rect.pyx":51
+  /* "rect.pyx":41
  *     @property
  *     def y0(self):
  *         return self.c_rect.y0             # <<<<<<<<<<<<<<
@@ -1970,13 +1856,13 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2y0___get__(struct __pyx_obj_4rect
  *     def y0(self, y0):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.y0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 51, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.y0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "rect.pyx":50
+  /* "rect.pyx":40
  *     # Attribute access
  *     @property
  *     def y0(self):             # <<<<<<<<<<<<<<
@@ -1995,7 +1881,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2y0___get__(struct __pyx_obj_4rect
   return __pyx_r;
 }
 
-/* "rect.pyx":53
+/* "rect.pyx":43
  *         return self.c_rect.y0
  *     @y0.setter
  *     def y0(self, y0):             # <<<<<<<<<<<<<<
@@ -2022,17 +1908,17 @@ static int __pyx_pf_4rect_11PyRectangle_2y0_2__set__(struct __pyx_obj_4rect_PyRe
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "rect.pyx":54
+  /* "rect.pyx":44
  *     @y0.setter
  *     def y0(self, y0):
  *         self.c_rect.y0 = y0             # <<<<<<<<<<<<<<
  * 
  *     # Attribute access
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_y0); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 54, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_y0); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 44, __pyx_L1_error)
   __pyx_v_self->c_rect.y0 = __pyx_t_1;
 
-  /* "rect.pyx":53
+  /* "rect.pyx":43
  *         return self.c_rect.y0
  *     @y0.setter
  *     def y0(self, y0):             # <<<<<<<<<<<<<<
@@ -2051,7 +1937,7 @@ static int __pyx_pf_4rect_11PyRectangle_2y0_2__set__(struct __pyx_obj_4rect_PyRe
   return __pyx_r;
 }
 
-/* "rect.pyx":58
+/* "rect.pyx":48
  *     # Attribute access
  *     @property
  *     def y1(self):             # <<<<<<<<<<<<<<
@@ -2078,7 +1964,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2y1___get__(struct __pyx_obj_4rect
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "rect.pyx":59
+  /* "rect.pyx":49
  *     @property
  *     def y1(self):
  *         return self.c_rect.y1             # <<<<<<<<<<<<<<
@@ -2086,13 +1972,13 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2y1___get__(struct __pyx_obj_4rect
  *     def y1(self, y1):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.y1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 59, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->c_rect.y1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "rect.pyx":58
+  /* "rect.pyx":48
  *     # Attribute access
  *     @property
  *     def y1(self):             # <<<<<<<<<<<<<<
@@ -2111,7 +1997,7 @@ static PyObject *__pyx_pf_4rect_11PyRectangle_2y1___get__(struct __pyx_obj_4rect
   return __pyx_r;
 }
 
-/* "rect.pyx":61
+/* "rect.pyx":51
  *         return self.c_rect.y1
  *     @y1.setter
  *     def y1(self, y1):             # <<<<<<<<<<<<<<
@@ -2137,15 +2023,15 @@ static int __pyx_pf_4rect_11PyRectangle_2y1_2__set__(struct __pyx_obj_4rect_PyRe
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "rect.pyx":62
+  /* "rect.pyx":52
  *     @y1.setter
  *     def y1(self, y1):
  *         self.c_rect.y1 = y1             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_y1); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 62, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_y1); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 52, __pyx_L1_error)
   __pyx_v_self->c_rect.y1 = __pyx_t_1;
 
-  /* "rect.pyx":61
+  /* "rect.pyx":51
  *         return self.c_rect.y1
  *     @y1.setter
  *     def y1(self, y1):             # <<<<<<<<<<<<<<
@@ -2494,14 +2380,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_dy, __pyx_k_dy, sizeof(__pyx_k_dy), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
-  {&__pyx_n_s_main_2, __pyx_k_main_2, sizeof(__pyx_k_main_2), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
-  {&__pyx_n_s_rec_area, __pyx_k_rec_area, sizeof(__pyx_k_rec_area), 0, 0, 1, 1},
-  {&__pyx_n_s_rec_ptr, __pyx_k_rec_ptr, sizeof(__pyx_k_rec_ptr), 0, 0, 1, 1},
-  {&__pyx_n_s_rec_stack, __pyx_k_rec_stack, sizeof(__pyx_k_rec_stack), 0, 0, 1, 1},
-  {&__pyx_n_s_rect, __pyx_k_rect, sizeof(__pyx_k_rect), 0, 0, 1, 1},
-  {&__pyx_kp_s_rect_pyx, __pyx_k_rect_pyx, sizeof(__pyx_k_rect_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
@@ -2543,18 +2423,6 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-
-  /* "rect.pyx":5
- * from Rectangle cimport Rectangle
- * 
- * def main():             # <<<<<<<<<<<<<<
- *     rec_ptr = new Rectangle(1, 2, 3, 4)  # Instantiate a Rectangle object on the heap
- *     try:
- */
-  __pyx_tuple__3 = PyTuple_Pack(3, __pyx_n_s_rec_ptr, __pyx_n_s_rec_area, __pyx_n_s_rec_stack); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__3);
-  __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rect_pyx, __pyx_n_s_main_2, 5, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2605,15 +2473,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_4rect_PyRectangle) < 0) __PYX_ERR(1, 15, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_4rect_PyRectangle) < 0) __PYX_ERR(1, 5, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_4rect_PyRectangle.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_4rect_PyRectangle.tp_dictoffset && __pyx_type_4rect_PyRectangle.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_4rect_PyRectangle.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyRectangle, (PyObject *)&__pyx_type_4rect_PyRectangle) < 0) __PYX_ERR(1, 15, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_4rect_PyRectangle) < 0) __PYX_ERR(1, 15, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyRectangle, (PyObject *)&__pyx_type_4rect_PyRectangle) < 0) __PYX_ERR(1, 5, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_4rect_PyRectangle) < 0) __PYX_ERR(1, 5, __pyx_L1_error)
   __pyx_ptype_4rect_PyRectangle = &__pyx_type_4rect_PyRectangle;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -2842,18 +2710,6 @@ if (!__Pyx_RefNanny) {
   #if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
-
-  /* "rect.pyx":5
- * from Rectangle cimport Rectangle
- * 
- * def main():             # <<<<<<<<<<<<<<
- *     rec_ptr = new Rectangle(1, 2, 3, 4)  # Instantiate a Rectangle object on the heap
- *     try:
- */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_4rect_1main, NULL, __pyx_n_s_rect); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_main_2, __pyx_t_1) < 0) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "rect.pyx":1
  * # distutils: language = c++             # <<<<<<<<<<<<<<
