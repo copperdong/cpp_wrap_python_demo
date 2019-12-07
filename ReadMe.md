@@ -13,7 +13,7 @@ language 其实默认就是 c，我们使用的c++ 需要指定c++。
 include_dirs 这个就是传给 gcc 的 -I 参数，我们需要制定编译目录。  
 使用方法：在工程python目录下运行 **./build.sh** 之后 **python rect_test.py** 即可看到对应的输出。
 
-demo_static
+demo_dynamic
 -------------
 静态编译有很多缺点，cython同样也可以使用动态编译，我们需要在setup.py中指定我们的编译路径，指明我们动态链接库的目录。  
 library_dirs 这个就是传给 gcc 的 -L 参数，我们指定对应的动态链接库的目录。  
