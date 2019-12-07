@@ -1,11 +1,12 @@
 从cudf源码看cython使用方法
-=========================
-一、介绍
+========================
+一、 介绍
 ----------
 python是一种高层级的，动态的，解释性的，易学的语言，但是其带来的副作用是，运行效率可能会比静态编译语言慢几个数量级。我们可以使用python调用外部接口的方式，极大的提高python的运行效率，cython正是一种可以为Python编写接口的语言。相当于Python做前端的计算，后台的运行就交给用c或者c++实现的这些动态库来完成了，效率相比之前快了很多，既拥有了Python的便捷，又拥有了静态语言的速度，实在是不亦乐乎！
-cudf当然也注意到了这一点，所以就使用cython来为pandas写封装了，大大提升了数据分析的速度。那么既然cython这么神奇我们又怎么使用cython为Python编写接口呢？
+cudf当然也注意到了这一点，所以就使用cython来为pandas写封装了，大大提升了数据分析的速度。那么既然cython这么神奇我们又怎么使用cython为Python编写接口呢？  
+
 二、三个小例子
---------------------
+------------
 请看范例：https://github.com/zhangjiaxinghust/cpp_warp_python_demo
 环境配置:(ubuntu 16.04)
 * 下载conda安装脚本 https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 运行安装conda环境。
