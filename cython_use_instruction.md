@@ -10,7 +10,8 @@ cudf当然也注意到了这一点，所以就使用cython来为pandas写封装�
 请看范例：https://github.com/zhangjiaxinghust/cpp_warp_python_demo
 环境配置:(ubuntu 16.04)
 * 下载conda安装脚本 https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 运行安装conda环境。
-*  `conda install cython` 安装cython，下面demo均在conda下使用。
+*  `conda install cython` 安装cython，下面demo均在conda下使用。  
+
 ###1. 简单入门示例demo_simple
 我们使用的类示例是一个矩形类，四个变量x0，y0，x1，y1代表矩形的变量位置，定义了构造函数，析构函数，提供了三个函数 `int getArea();`  `void getSize(int* width, int* height);` 和 `void move(int dx, int dy);`分别在 `Rectangle.h`和`Rectangle.cpp`中完成声明和编写。
 同时我们可以看到有两个文件`Rectangle.pxd`和`rect.pyx`，他们的后缀名是不一样的，这类似于c++中的`.h`文件和`.cpp`文件，`.pxd` 文件中有 Cython 模块要包含的 Cython 声明 (或代码段)。`.pxd`文件可共享外部 C 语言声明，也能包含 C 编译器内联函数。可用 `cimport` 关键字将 `.pxd` 文件导入 `.pyx` 模块文件中。`.pyx` 文件是由 Cython 编程语言 "编写" 而成的 Python 扩展模块源代码文件。`.pyx` 文件类似于 C++ 语言的 .cpp 源代码文件，`.pyx` 文件中有 Cython 模块的源代码。不像 Python 语言可直接解释使用的 `.py` 文件，`.pyx` 文件必须先被编译成 `.c`或者`.cpp` 文件，再编译成 `.pyd` (Windows 平台) 或 `.so` (Linux 平台) 文件，才可作为模块 import 导入使用。
@@ -111,7 +112,8 @@ pyRect = rect.PyRectangle(100, 100, 300, 500)
 width, height = pyRect.get_size()
 print("size: width = %d, height = %d" % (width, height))
 ```
-Python运行之后输出正确就代表大功告成了！
+Python运行之后输出正确就代表大功告成了！  
+
 ###2. 进阶静态编译入门示例demo_static
 很多情况下项目很大，我们根本无法像上面那样在一个目录下完成，那又该怎么去编写呢？
 可以告诉大家的是，cython非常的人性化，大家现在可以把`setup.py`看做是一个有着类似`gcc`功能的编译配置文件。如果更改了目录结构之后不改变`setup.py`的任何内容的话，直接编译会报错，因为这时候在链接翻译文件`rect.cpp`的时候找不到源码文件。这时后我们只需要将`setup.py`做小小的修改即可。
@@ -140,8 +142,10 @@ setup(
     ext_modules=cythonize(extensions)
 )
 ```
-`name`代表我们编译出的动态库的名称。`include_dirs`代表传给 gcc 的 -I 参数` ，只需要稍作指定即可，是不是感觉so easy！
-###2. 进阶动态编译入门示例demo_dynamic
+`name`代表我们编译出的动态库的名称。`include_dirs`代表传给 gcc 的 -I 参数` ，只需要稍作指定即可，是不是感觉so easy！  
+
+###3. 进阶动态编译入门示例demo_dynamic  
+
 很多时候，随着我们项目的开发，静态编译有很多缺点，那么我们是否可以进行动态编译呢？
 可以发现，cython本身就是先翻译为`.c`或者`cpp`文件然后再进行链接，自然可以支持动态编译了。只需要在链接的时候链接对应的动态库，然后执行是寻找动态库就可以了。同样使用动态链接的话我们需要在上面静态例子中更改`setup.py`和`Rectangle.pxd`我们需要在`Rectangle.pxd`中去掉`cdef extern from "Rectangle.cpp"`，因为我们是动态链接，直接寻找动态库中的函数声明就可以，相应的我们需要在`setup.py`中添加关于动态库的声明：
 ```
@@ -169,5 +173,5 @@ setup(
     ext_modules=cythonize(extensions)
 )
 ```
-`library_dirs` 这个就是传给 gcc 的 -L 参数，我们指定对应的动态链接库的目录。`libraries` 这个就是传给 gcc 的 -l 参数，我们指定动态链接库的名称。同时，我们只需要在`setup.py`中指定`.h`头文件所在的目录即可。
+`library_dirs` 这个就是传给 gcc 的 -L 参数，我们指定对应的动态链接库的目录。`libraries` 这个就是传给 gcc 的 -l 参数，我们指定动态链接库的名称。同时，我们只需要在`setup.py`中指定`.h`头文件所在的目录即可。  
 官方参考：https://cython.readthedocs.io/en/latest/src/userguide/wrapping_CPlusPlus.html 
