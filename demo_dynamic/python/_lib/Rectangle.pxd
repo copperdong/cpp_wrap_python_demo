@@ -1,5 +1,5 @@
 # distutils: language = c++
-# distutils: sources = Rectangle.cpp
+
 
 # Declare the class with cdef
 cdef extern from "Rectangle.h" namespace "shapes":
