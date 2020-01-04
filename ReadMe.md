@@ -24,3 +24,8 @@ libraries 这个就是传给 gcc 的 -l 参数，我们指定动态链接库的�
 2. 运行 _./build.sh_ 生成Python的动态链接库。  
 3. 在python目录下执行 _python rect_test.py_ 即可看到对应的输出。  
 详细介绍参考cython_use_instruction.md
+
+
+demo_cuda
+-------------
+一个简单的调用cuda程序的例子，直接运行`./build.sh`即可。
