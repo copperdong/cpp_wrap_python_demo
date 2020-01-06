@@ -1,7 +1,7 @@
 #include <calculate.h>
 #include <malloc.h>
 namespace zjx{
-const int block_max=256;
+const int block_max=1024;
 const int grid_max=1024;
 struct grid_struct{
     int block_num;
